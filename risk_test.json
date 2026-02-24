@@ -1,0 +1,8 @@
+{
+  "age": 45,
+  "bmi": 28.5,
+  "systolic_bp": 140,
+  "diastolic_bp": 90,
+  "severity_score": 3,
+  "chronic_conditions": "hypertension"
+}

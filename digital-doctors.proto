@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package digitaldoctors;
+
+import "google/protobuf/empty.proto";
+
+
+// ==========================
+// ===== Risk Prediction ====
+// ==========================
+
+message PredictRiskRequest {
+  int32 age = 1;
+  double bmi = 2;
+  int32 systolic_bp = 3;
+  int32 diastolic_bp = 4;
+  int32 severity_score = 5;
+  string chronic_conditions = 6;
+}
+
+message RiskProbabilities {
+  double high = 1;
+  double medium = 2;
+  double low = 3;
+}
+
+message PredictRiskResponse {
+  string prediction = 1;
+  double confidence = 2;
+  string model = 3;
+  RiskProbabilities probabilities = 4;
+  bool success = 5;
+  string warning = 6; // optional
+}
+
+
+// =============================
+// ===== Treatment Prediction ==
+// =============================
+
+message PredictTreatmentRequest {
+  int32 patient_age = 1;
+  int32 severity_score = 2;
+  double compliance_rate = 3;
+  string medication = 4;
+  string condition = 5;
+}
+
+message TreatmentProbabilities {
+  double success = 1;
+  double failure = 2;
+}
+
+message PredictTreatmentResponse {
+  int32 prediction = 1; // 1 = success, 0 = failure
+  double confidence = 2;
+  string model = 3;
+  TreatmentProbabilities probabilities = 4;
+  bool success = 5;
+  double success_probability = 6;
+}
+
+
+// ==========================
+// ===== Health Check =======
+// ==========================
+
+message HealthResponse {
+  string status = 1;
+}
+
+
+// ==========================
+// ===== Service ============
+// ==========================
+
+service DigitalDoctorsAssistantService {
+
+  rpc PredictRisk(PredictRiskRequest)
+      returns (PredictRiskResponse);
+
+  rpc PredictTreatment(PredictTreatmentRequest)
+      returns (PredictTreatmentResponse);
+
+  rpc HealthCheck(google.protobuf.Empty)
+      returns (HealthResponse);
+}

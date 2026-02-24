@@ -1,0 +1,7 @@
+{
+  "patient_age": 60,
+  "severity_score": 4,
+  "compliance_rate": 0.8,
+  "medication": "Metformin",
+  "condition": "Type 2 Diabetes"
+}
