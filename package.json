@@ -1,0 +1,17 @@
+{
+  "name": "digital-doctors",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "google-protobuf": "^4.0.2",
+    "grpc-web": "^2.0.2",
+    "ts-protoc-gen": "^0.15.0"
+  }
+}
